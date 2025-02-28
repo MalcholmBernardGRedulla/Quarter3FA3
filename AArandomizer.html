@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AA - Randomizer</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        .container { background: #f4f4f4; padding: 20px; border-radius: 10px; display: inline-block; }
+        h1 { color: #333; }
+        .result { margin-top: 20px; font-size: 18px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AA - Randomizer</h1>
+        <button onclick="generateRandomValues()">Generate</button>
+        <div class="result" id="output"></div>
+    </div>
+
+    <script>
+        function generateRandomValues() {
+            let num1 = Math.ceil(Math.random() * 20);
+            let num2 = Math.ceil(Math.random() * 20);
+            let num3 = Math.ceil(Math.random() * 20);
+            
+            let maxNum = Math.max(num1, num2, num3);
+            let nthLetter = String.fromCharCode(64 + num1); // A=1, B=2, ..., T=20
+            let totalMinutes = num2 * num3;
+            let hours = Math.floor(totalMinutes / 60);
+            let minutes = totalMinutes % 60;
+            
+            let story = "The highest weight of the three people is: " + maxNum + " kg.<br>"
+                       + "The " + num1 + "th letter in the English alphabet is: " + nthLetter + ".<br>"
+                       + "The total time of " + totalMinutes + " minutes is equivalent to " + hours + " hour(s) and " + minutes + " minute(s).";
+            
+            document.getElementById("output").innerHTML = "<p><strong>Generated Random Numbers:</strong> " + num1 + ", " + num2 + ", " + num3 + "</p>"
+                + "<p><strong>The biggest number is:</strong> " + maxNum + "</p>"
+                + "<p><strong>" + num1 + "th letter in the alphabet:</strong> " + nthLetter + "</p>"
+                + "<p><strong>Time breakdown:</strong> " + totalMinutes + " minutes = " + hours + " hour(s) and " + minutes + " minute(s)</p>"
+                + "<p><strong>Story:</strong><br> " + story + "</p>";
+            
+        }
+    </script>
+</body>
+</html>
